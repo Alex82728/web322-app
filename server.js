@@ -8,7 +8,7 @@ No part of this assignment has been copied manually or electronically from any o
 Name: Alexandru Zaporojan
 Student ID: 105756233 
 Date: 2024/10/08
-Render Web App URL: https://dashboard.render.com/blueprint/exs-cs2o41u8ii6s739md19g
+Render Web App URL: https://web322-app-6scn.onrender.com
 GitHub Repository URL: https://github.com/azaporojan_seneca/Web-322--app
 
 ********************************************************************************/ 
