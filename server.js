@@ -1,19 +1,34 @@
+/*********************************************************************************
+
+WEB322 – Assignment 02
+I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
+No part of this assignment has been copied manually or electronically from any other source 
+(including 3rd party web sites) or distributed to other students.
+
+Name: Alexandru Zaporojan
+Student ID: 105756233 
+Date: 2024/10/08
+Cyclic Web App URL: 
+GitHub Repository URL: https://github.com/azaporojan_seneca/Web-322--app
+
+********************************************************************************/ 
+
 const express = require('express');
 const path = require('path');
-const storeService = require('./store-service');
+const storeService = require('./store-service'); 
 
 const app = express();
 const PORT = 8080;
 
-// Middleware to serve static files
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route for the about page
+// Route for the /about page
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'about.html'));
+    res.sendFile(path.join(__dirname, 'views', 'about.html')); 
 });
 
-// Route for the shop page
+
 app.get('/shop', (req, res) => {
     storeService.getPublishedItems()
         .then((data) => {
@@ -24,7 +39,7 @@ app.get('/shop', (req, res) => {
         });
 });
 
-// Route for items
+
 app.get('/items', (req, res) => {
     storeService.getAllItems()
         .then((data) => {
@@ -35,7 +50,7 @@ app.get('/items', (req, res) => {
         });
 });
 
-// Route for categories
+
 app.get('/categories', (req, res) => {
     storeService.getCategories()
         .then((data) => {
@@ -46,12 +61,12 @@ app.get('/categories', (req, res) => {
         });
 });
 
-// Custom 404 page for unmatched routes
+
 app.use((req, res) => {
     res.status(404).send('Page Not Found');
 });
 
-// Initialize data and start the server
+
 storeService.initialize()
     .then(() => {
         app.listen(PORT, () => {
@@ -59,5 +74,5 @@ storeService.initialize()
         });
     })
     .catch((err) => {
-        console.error(err);
+        console.error("Failed to start server:", err);
     });
